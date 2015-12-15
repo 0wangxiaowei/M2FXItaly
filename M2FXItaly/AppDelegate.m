@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "LockViewController.h"
+#import "TTSwitch.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +18,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [[TTSwitch appearance] setTrackImage:[UIImage imageNamed:@"round-switch-track"]];
+    [[TTSwitch appearance] setOverlayImage:[UIImage imageNamed:@"round-switch-overlay"]];
+    [[TTSwitch appearance] setTrackMaskImage:[UIImage imageNamed:@"round-switch-mask"]];
+    [[TTSwitch appearance] setThumbImage:[UIImage imageNamed:@"round-switch-thumb"]];
+    [[TTSwitch appearance] setThumbHighlightImage:[UIImage imageNamed:@"round-switch-thumb-highlight"]];
+    [[TTSwitch appearance] setThumbMaskImage:[UIImage imageNamed:@"round-switch-mask"]];
+    [[TTSwitch appearance] setThumbInsetX:-3.0f];
+    [[TTSwitch appearance] setThumbOffsetY:-3.0f];
+    TTSwitch *s = [[TTSwitch alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    [self.window addSubview:s];
+    LockViewController *lockvc  = [[LockViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lockvc];
+    self.window.rootViewController = nav;
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
